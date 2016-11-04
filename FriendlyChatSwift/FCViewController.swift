@@ -32,10 +32,18 @@ let kBannerAdUnitID = "ca-app-pub-3940256099942544/2934735716"
 class FCViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
     UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+//    let messageSnapshot: FIRDataSnapshot! = self.messages[indexPath.row]
+//    //print(messageSnapshot)
+//    let message = messageSnapshot.value as! NSDictionary
+//    //print(message)
+//    let date = message.objectForKey("date") as! String
+//    let time = message.objectForKey("time") as! String
+//    let aNum = message.objectForKey("weight") as! NSNumber
     
     @IBOutlet weak var pieChartView: PieChartView!
     
-    var waterConsumed = Int() // records weight
+    var weightRecord = [Int]() // records weight
+    var waterConsumed:Int = 0
 
   // Instance variables
   @IBOutlet weak var textField: UITextField!
@@ -47,6 +55,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
 
   var storageRef: FIRStorageReference!
   var remoteConfig: FIRRemoteConfig!
+    
 
   @IBOutlet weak var banner: GADBannerView!
   @IBOutlet weak var clientTable: UITableView!
@@ -64,16 +73,43 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     loadAd()
     logViewLoaded()
     
+    
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
     let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
     
     setChart(months, values: unitsSold)
+    
+    let triggerTime = (Int64(NSEC_PER_SEC) * 3)
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+        self.calculateConsumption()
+    })
+    
     
   }
 
   deinit {
     self.ref.child("messages").removeObserverWithHandle(_refHandle)
   }
+    
+    func calculateConsumption(){
+        //print(weightRecord)
+        
+
+        
+        var i = 0
+        repeat {
+            
+            if i >= 1{
+                var weightLoss = weightRecord[i] - weightRecord[i-1]
+                print("WEIGHT LOSS:\(weightLoss)")
+                waterConsumed = waterConsumed - weightLoss
+            }
+            i = i + 1
+        } while i < weightRecord.count
+        
+        print("********WEIGHT RECORD:\(weightRecord)")
+        print("********WATER CONSUMED:\(waterConsumed)")
+    }
     
     func setChart(dataPoints: [String], values: [Double]) {
         
@@ -109,7 +145,18 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     _refHandle = self.ref.child("messages").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
       self.messages.append(snapshot)
       self.clientTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        //print("SNAPSHOT:\(snapshot)")
+        
+        //    let date = message.objectForKey("date") as! String
+        //    let time = message.objectForKey("time") as! String
+        let message = snapshot.value as! NSDictionary
+        let aNum = message.objectForKey("weight") as! NSNumber
+        //print("ANUM:\(aNum)")
+        self.weightRecord.append(Int(aNum))
     })
+    
+
+    
   }
 
   func configureStorage() {
@@ -204,11 +251,6 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         //print(date)
         // changed ^^^
         
-        //old code
-        //let message = messageSnapshot.value as! Dictionary<String, String>
-        //let date = message[Constants.MessageFields.date] as String!
-        //
-        
         if let imageUrl = message[Constants.MessageFields.imageUrl] {
             if imageUrl.hasPrefix("gs://") {
                 FIRStorage.storage().referenceForURL(imageUrl as! String).dataWithMaxSize(INT64_MAX){ (data, error) in
@@ -226,15 +268,17 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
             
             //let text = message[Constants.MessageFields.weight] as! String! <- doesn't work
             
-            // changed vvv
+
             let aNum = message.objectForKey("weight") as! NSNumber
+            //self.weightRecord.append(Int(aNum)) // for calculations of Pie Chart
             let text = aNum.stringValue
-            // changed ^^^
+
             
             cell!.textLabel?.text = date + "/" + time + ": " + text
             cell!.imageView?.image = UIImage(named: "ic_account_circle")
             if let photoUrl = message[Constants.MessageFields.photoUrl], url = NSURL(string:photoUrl as! String), data = NSData(contentsOfURL: url) {
                 cell!.imageView?.image = UIImage(data: data)
+                
             }
         }
         return cell!
