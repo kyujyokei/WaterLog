@@ -35,15 +35,16 @@ class SignInViewController: UIViewController {
 
   @IBAction func didTapSignIn(sender: AnyObject) {
     // Sign In with credentials.
-    let email = emailField.text
-    let password = passwordField.text
-    FIRAuth.auth()?.signInWithEmail(email!, password: password!) { (user, error) in
-      if let error = error {
-        print(error.localizedDescription)
-        return
-      }
-      self.signedIn(user!)
-    }
+//    let email = emailField.text
+//    let password = passwordField.text
+//    FIRAuth.auth()?.signInWithEmail(email!, password: password!) { (user, error) in
+//      if let error = error {
+//        print(error.localizedDescription)
+//        return
+//      }
+//      self.signedIn(user!)
+//    }
+    performSegueWithIdentifier(Constants.Segues.SignInToFp, sender: nil)
   }
     
   @IBAction func didTapSignUp(sender: AnyObject) {

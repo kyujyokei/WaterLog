@@ -148,36 +148,57 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     return messages.count
   }
 
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    // Dequeue cell
-    let cell: UITableViewCell! = self.clientTable.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
-    // Unpack message from Firebase DataSnapshot
-    let messageSnapshot: FIRDataSnapshot! = self.messages[indexPath.row]
-    let message = messageSnapshot.value as! Dictionary<String, String>
-    let date = message[Constants.MessageFields.date] as String!
-    if let imageUrl = message[Constants.MessageFields.imageUrl] {
-      if imageUrl.hasPrefix("gs://") {
-        FIRStorage.storage().referenceForURL(imageUrl).dataWithMaxSize(INT64_MAX){ (data, error) in
-          if let error = error {
-            print("Error downloading: \(error)")
-            return
-          }
-          cell.imageView?.image = UIImage.init(data: data!)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // Dequeue cell
+        let cell: UITableViewCell! = self.clientTable.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
+        // Unpack message from Firebase DataSnapshot
+        
+        // changed vvv
+        //print statements are there just to check the data...
+        let messageSnapshot: FIRDataSnapshot! = self.messages[indexPath.row]
+        //print(messageSnapshot)
+        let message = messageSnapshot.value as! NSDictionary
+        //print(message)
+        let date = message.objectForKey("date") as! String
+        let time = message.objectForKey("time") as! String
+        //print(date)
+        // changed ^^^
+        
+        //old code
+        //let message = messageSnapshot.value as! Dictionary<String, String>
+        //let date = message[Constants.MessageFields.date] as String!
+        //
+        
+        if let imageUrl = message[Constants.MessageFields.imageUrl] {
+            if imageUrl.hasPrefix("gs://") {
+                FIRStorage.storage().referenceForURL(imageUrl as! String).dataWithMaxSize(INT64_MAX){ (data, error) in
+                    if let error = error {
+                        print("Error downloading: \(error)")
+                        return
+                    }
+                    cell.imageView?.image = UIImage.init(data: data!)
+                }
+            } else if let url = NSURL(string:imageUrl as! String), data = NSData(contentsOfURL: url) {
+                cell.imageView?.image = UIImage.init(data: data)
+            }
+            cell!.textLabel?.text = "sent by: \(date)"
+        } else {
+            
+            //let text = message[Constants.MessageFields.weight] as! String! <- doesn't work
+            
+            // changed vvv
+            let aNum = message.objectForKey("weight") as! NSNumber
+            let text = aNum.stringValue
+            // changed ^^^
+            
+            cell!.textLabel?.text = date + "/" + time + ": " + text
+            cell!.imageView?.image = UIImage(named: "ic_account_circle")
+            if let photoUrl = message[Constants.MessageFields.photoUrl], url = NSURL(string:photoUrl as! String), data = NSData(contentsOfURL: url) {
+                cell!.imageView?.image = UIImage(data: data)
+            }
         }
-      } else if let url = NSURL(string:imageUrl), data = NSData(contentsOfURL: url) {
-        cell.imageView?.image = UIImage.init(data: data)
-      }
-      cell!.textLabel?.text = "sent by: \(date)"
-    } else {
-      let text = message[Constants.MessageFields.weight] as String!
-      cell!.textLabel?.text = date + ": " + text
-      cell!.imageView?.image = UIImage(named: "ic_account_circle")
-      if let photoUrl = message[Constants.MessageFields.photoUrl], url = NSURL(string:photoUrl), data = NSData(contentsOfURL: url) {
-        cell!.imageView?.image = UIImage(data: data)
-      }
+        return cell!
     }
-    return cell!
-  }
 
   // UITextViewDelegate protocol methods
   func textFieldShouldReturn(textField: UITextField) -> Bool {
