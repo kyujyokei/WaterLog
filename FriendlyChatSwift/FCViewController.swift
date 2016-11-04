@@ -32,18 +32,10 @@ let kBannerAdUnitID = "ca-app-pub-3940256099942544/2934735716"
 class FCViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
     UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-//    let messageSnapshot: FIRDataSnapshot! = self.messages[indexPath.row]
-//    //print(messageSnapshot)
-//    let message = messageSnapshot.value as! NSDictionary
-//    //print(message)
-//    let date = message.objectForKey("date") as! String
-//    let time = message.objectForKey("time") as! String
-//    let aNum = message.objectForKey("weight") as! NSNumber
-    
     @IBOutlet weak var pieChartView: PieChartView!
     
-    var weightRecord = [Int]() // records weight
-    var waterConsumed:Int = 0
+    var weightRecord = [Double]() // records weight
+    var waterConsumed:Double = 0
 
   // Instance variables
   @IBOutlet weak var textField: UITextField!
@@ -74,10 +66,6 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     logViewLoaded()
     
     
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
-    
-    setChart(months, values: unitsSold)
     
     let triggerTime = (Int64(NSEC_PER_SEC) * 3)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
@@ -100,7 +88,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         repeat {
             
             if i >= 1{
-                var weightLoss = weightRecord[i] - weightRecord[i-1]
+                var weightLoss:Double = weightRecord[i] - weightRecord[i-1]
                 print("WEIGHT LOSS:\(weightLoss)")
                 waterConsumed = waterConsumed - weightLoss
             }
@@ -109,6 +97,14 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         
         print("********WEIGHT RECORD:\(weightRecord)")
         print("********WATER CONSUMED:\(waterConsumed)")
+        
+        
+        let months = ["Jan", "Feb"]
+        var remain = Double(2000.0 - waterConsumed)
+        let unitsSold = [remain,waterConsumed]
+        
+        setChart(months, values: unitsSold)
+        
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -152,7 +148,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         let message = snapshot.value as! NSDictionary
         let aNum = message.objectForKey("weight") as! NSNumber
         //print("ANUM:\(aNum)")
-        self.weightRecord.append(Int(aNum))
+        self.weightRecord.append(Double(aNum))
     })
     
 
