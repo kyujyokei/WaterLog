@@ -272,6 +272,7 @@
                     <connections>
                         <outlet property="banner" destination="9C0-fE-spr" id="NlI-Px-SJT"/>
                         <outlet property="clientTable" destination="DHD-HU-kCB" id="VEb-Fb-vE0"/>
+                        <outlet property="pieChartView" destination="mGJ-UK-rIG" id="kT5-Il-IsF"/>
                         <outlet property="sendButton" destination="wv1-bL-LxQ" id="NjU-mG-4FR"/>
                         <outlet property="textField" destination="STK-FK-gn5" id="NHK-Z3-xOt"/>
                     </connections>

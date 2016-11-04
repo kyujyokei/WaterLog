@@ -19,6 +19,7 @@ import UIKit
 
 import Firebase
 import GoogleMobileAds
+import Charts
 
 /**
  * AdMob ad unit IDs are not currently stored inside the google-services.plist file. Developers
@@ -30,6 +31,11 @@ let kBannerAdUnitID = "ca-app-pub-3940256099942544/2934735716"
 @objc(FCViewController)
 class FCViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,
     UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    @IBOutlet weak var pieChartView: PieChartView!
+    
+    var waterConsumed = Int() // records weight
 
   // Instance variables
   @IBOutlet weak var textField: UITextField!
@@ -57,11 +63,45 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     fetchConfig()
     loadAd()
     logViewLoaded()
+    
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+    
+    setChart(months, values: unitsSold)
+    
   }
 
   deinit {
     self.ref.child("messages").removeObserverWithHandle(_refHandle)
   }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Units Sold")
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        pieChartView.data = pieChartData
+        
+        var colors: [UIColor] = []
+        
+        for i in 0..<dataPoints.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            
+            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }
+        
+        pieChartDataSet.colors = colors
+        
+    }
 
   func configureDatabase() {
     ref = FIRDatabase.database().reference()
