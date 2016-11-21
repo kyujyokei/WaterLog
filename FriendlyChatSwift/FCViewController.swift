@@ -62,7 +62,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     configureStorage()
     configureRemoteConfig()
     fetchConfig()
-    loadAd()
+    //loadAd()
     logViewLoaded()
     
     
@@ -88,7 +88,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         repeat {
             
             if i >= 1{
-                var weightLoss:Double = weightRecord[i] - weightRecord[i-1]
+                let weightLoss:Double = weightRecord[i] - weightRecord[i-1]
                 print("WEIGHT LOSS:\(weightLoss)")
                 waterConsumed = waterConsumed - weightLoss
             }
@@ -99,11 +99,17 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         print("********WATER CONSUMED:\(waterConsumed)")
         
         
-        let months = ["Jan", "Feb"]
-        var remain = Double(2000.0 - waterConsumed)
-        let unitsSold = [remain,waterConsumed]
+        let months = ["Today's Goal", "Water Consumed"]
+        let remain = Double(2000.0 - waterConsumed)
+        
+        var unitsSold = [remain,waterConsumed]
+        
+        if remain <= 0 {
+             unitsSold = [110,2000]
+        }
         
         setChart(months, values: unitsSold)
+        
         
     }
     
@@ -120,18 +126,9 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
-        var colors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
-        
-        pieChartDataSet.colors = colors
+        pieChartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),
+                                  UIColor(red: 254/255, green: 200/255, blue: 134/255, alpha: 1)]
+        //pieChartDataSet.colors = ChartColorTemplates.liberty()
         
     }
 
@@ -141,7 +138,10 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     _refHandle = self.ref.child("messages").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
       self.messages.append(snapshot)
       self.clientTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
+        print("HEY YO")
         //print("SNAPSHOT:\(snapshot)")
+        self.calculateConsumption()
+        
         
         //    let date = message.objectForKey("date") as! String
         //    let time = message.objectForKey("time") as! String
