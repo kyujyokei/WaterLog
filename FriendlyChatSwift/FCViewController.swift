@@ -65,7 +65,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     //loadAd()
     logViewLoaded()
     
-    
+    pieChartView.noDataText = "Loading..."
     
     let triggerTime = (Int64(NSEC_PER_SEC) * 3)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
@@ -122,20 +122,24 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Water consumed")
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
-        pieChartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),
-                                  UIColor(red: 254/255, green: 200/255, blue: 134/255, alpha: 1)]
+        pieChartDataSet.colors = [UIColor(red: 216/255, green: 229/255, blue: 242/255, alpha: 1),
+                                  UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1)]
         pieChartView.holeRadiusPercent = 0.95
         let myString = "Testing"
         let myAttribute = [ NSForegroundColorAttributeName: UIColor.blueColor(),
                             NSFontAttributeName: UIFont(name: "Helvetica Light", size: 52.0)!]
         let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
         pieChartView.centerAttributedText = myAttrString
-        
+        pieChartView.descriptionTextColor = UIColor.clearColor()
+        pieChartView.drawSliceTextEnabled = false
+
+        //pieChartView.hidden = false
         //pieChartDataSet.colors = ChartColorTemplates.liberty()
+        //pieChartView.animate(xAxisDuration: 1)
         
     }
 

@@ -23,13 +23,27 @@ class SignInViewController: UIViewController {
 
   @IBOutlet weak var emailField: UITextField!
   @IBOutlet weak var passwordField: UITextField!
+    
+    @IBOutlet weak var signInButton: UIButton!
+    
 
   override func viewDidAppear(animated: Bool) {
+    
+    //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"logbg")!)
+    let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)
+    backgroundImage.image = UIImage(named: "logbg.png")
+    self.view.insertSubview(backgroundImage, atIndex: 0)
     if let user = FIRAuth.auth()?.currentUser {
       self.signedIn(user)
     }
     emailField.text = "kyujyokei@gmail.com"
     passwordField.text = "effort"
+    
+    signInButton.layer.cornerRadius = signInButton.frame.height/2
+    signInButton.backgroundColor = UIColor.clearColor()
+    signInButton.layer.borderWidth = 1
+    signInButton.layer.borderColor = UIColor.whiteColor().CGColor
+    
     
   }
 
