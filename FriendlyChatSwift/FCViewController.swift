@@ -34,6 +34,22 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var pieChartView: PieChartView!
     
+    @IBOutlet weak var dailyGoalLabel: UILabel!
+    
+    @IBOutlet weak var dailyGoalValueLabel: UILabel!
+    
+    @IBAction func alarmButtonAction(sender: UIButton) {
+    }
+    
+    @IBAction func settingButtonAction(sender: UIButton) {
+    }
+    
+    @IBOutlet weak var recordsButton: UIButton!
+    
+    @IBAction func recordsButtonAction(sender: UIButton) {
+    }
+    
+    
     var weightRecord = [Double]() // records weight
     var waterConsumed:Double = 0
 
@@ -65,7 +81,18 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     //loadAd()
     logViewLoaded()
     
+    recordsButton.layer.cornerRadius = recordsButton.frame.height/2
+    recordsButton.backgroundColor = UIColor.clearColor()
+    recordsButton.layer.borderWidth = 1
+    recordsButton.layer.borderColor = UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1).CGColor
+    recordsButton.titleLabel!.font = UIFont (name: "Roboto-Light", size: 17)
+    
     pieChartView.noDataText = "Loading..."
+    pieChartView.backgroundColor = UIColor.clearColor()
+    
+    dailyGoalLabel.font = UIFont (name: "Roboto-Light", size: 25)
+    dailyGoalValueLabel.font = UIFont (name: "Roboto-Medium", size: 25)
+    dailyGoalValueLabel.textColor = UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1)
     
     let triggerTime = (Int64(NSEC_PER_SEC) * 3)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
@@ -120,6 +147,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         for i in 0..<dataPoints.count {
             let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
             dataEntries.append(dataEntry)
+            
         }
         
         let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
@@ -129,9 +157,9 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         pieChartDataSet.colors = [UIColor(red: 216/255, green: 229/255, blue: 242/255, alpha: 1),
                                   UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1)]
         pieChartView.holeRadiusPercent = 0.95
-        let myString = "Testing"
-        let myAttribute = [ NSForegroundColorAttributeName: UIColor.blueColor(),
-                            NSFontAttributeName: UIFont(name: "Helvetica Light", size: 52.0)!]
+        let myString = String(Int(waterConsumed))
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1),
+                            NSFontAttributeName: UIFont(name: "Fashion Fetish Light", size: 52.0)!]
         let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
         pieChartView.centerAttributedText = myAttrString
         pieChartView.descriptionTextColor = UIColor.clearColor()

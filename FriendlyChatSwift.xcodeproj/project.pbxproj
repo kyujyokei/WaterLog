@@ -16,7 +16,15 @@
 		2CA807BE1B217B21009AD7F2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA807BD1B217B21009AD7F2 /* AppState.swift */; };
 		5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */; };
 		5F5A53801ADE67D500F81DF0 /* FCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5A537F1ADE67D500F81DF0 /* FCViewController.swift */; };
+		C95344111DE6037C00F046F7 /* Fashion Fetish Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344101DE6037C00F046F7 /* Fashion Fetish Light.ttf */; };
+		C95344181DE6198A00F046F7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344131DE6198A00F046F7 /* Roboto-Bold.ttf */; };
+		C95344191DE6198A00F046F7 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344141DE6198A00F046F7 /* Roboto-Light.ttf */; };
+		C953441A1DE6198A00F046F7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344151DE6198A00F046F7 /* Roboto-Medium.ttf */; };
+		C953441B1DE6198A00F046F7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344161DE6198A00F046F7 /* Roboto-Regular.ttf */; };
+		C953441C1DE6198A00F046F7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344171DE6198A00F046F7 /* Roboto-Thin.ttf */; };
+		C95344221DE6264400F046F7 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95344211DE6264400F046F7 /* CustomSegue.swift */; };
 		C964C2141D80050E00A7E3BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */; };
+		C98BBF761DE629F600254542 /* LineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98BBF751DE629F600254542 /* LineTableViewController.swift */; };
 		D6902531E3B1713D79326E07 /* Pods_FriendlyChatSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 326FFA62113E19F168A107ED /* Pods_FriendlyChatSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +57,15 @@
 		5F5A53791ADE67D500F81DF0 /* FriendlyChatSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendlyChatSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5A537D1ADE67D500F81DF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F5A537F1ADE67D500F81DF0 /* FCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCViewController.swift; sourceTree = "<group>"; };
+		C95344101DE6037C00F046F7 /* Fashion Fetish Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fashion Fetish Light.ttf"; sourceTree = "<group>"; };
+		C95344131DE6198A00F046F7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		C95344141DE6198A00F046F7 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		C95344151DE6198A00F046F7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		C95344161DE6198A00F046F7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		C95344171DE6198A00F046F7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		C95344211DE6264400F046F7 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C98BBF751DE629F600254542 /* LineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */,
+				C95344121DE618BA00F046F7 /* Fonts */,
 				2C85627A1AFAB65F00F0B24B /* shared */,
 				5F5A537A1ADE67D500F81DF0 /* FriendlyChatSwift */,
 				5F5A534D1ADE670C00F81DF0 /* Products */,
@@ -109,6 +126,7 @@
 				5F5A537F1ADE67D500F81DF0 /* FCViewController.swift */,
 				2CA807BB1B21702E009AD7F2 /* MeasurementHelper.swift */,
 				2C8E6C2A1B16875B0073CE3D /* SignInViewController.swift */,
+				C98BBF751DE629F600254542 /* LineTableViewController.swift */,
 				2CA807BD1B217B21009AD7F2 /* AppState.swift */,
 				2C595F041B34B73A00355AE7 /* Constants.swift */,
 				5F5A537B1ADE67D500F81DF0 /* Supporting Files */,
@@ -120,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				107960711C612531003DB6CC /* Main.storyboard */,
+				C95344211DE6264400F046F7 /* CustomSegue.swift */,
 				107960741C61253B003DB6CC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -132,6 +151,19 @@
 				326FFA62113E19F168A107ED /* Pods_FriendlyChatSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C95344121DE618BA00F046F7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C95344131DE6198A00F046F7 /* Roboto-Bold.ttf */,
+				C95344141DE6198A00F046F7 /* Roboto-Light.ttf */,
+				C95344151DE6198A00F046F7 /* Roboto-Medium.ttf */,
+				C95344161DE6198A00F046F7 /* Roboto-Regular.ttf */,
+				C95344171DE6198A00F046F7 /* Roboto-Thin.ttf */,
+				C95344101DE6037C00F046F7 /* Fashion Fetish Light.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +235,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C953441A1DE6198A00F046F7 /* Roboto-Medium.ttf in Resources */,
 				2C8562871AFAB65F00F0B24B /* LaunchScreen.xib in Resources */,
 				107960731C612531003DB6CC /* Main.storyboard in Resources */,
+				C95344181DE6198A00F046F7 /* Roboto-Bold.ttf in Resources */,
+				C95344111DE6037C00F046F7 /* Fashion Fetish Light.ttf in Resources */,
+				C95344191DE6198A00F046F7 /* Roboto-Light.ttf in Resources */,
+				C953441B1DE6198A00F046F7 /* Roboto-Regular.ttf in Resources */,
 				C964C2141D80050E00A7E3BF /* GoogleService-Info.plist in Resources */,
+				C953441C1DE6198A00F046F7 /* Roboto-Thin.ttf in Resources */,
 				2C8562851AFAB65F00F0B24B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,8 +307,10 @@
 				2CA807BE1B217B21009AD7F2 /* AppState.swift in Sources */,
 				5F5A53801ADE67D500F81DF0 /* FCViewController.swift in Sources */,
 				5F5A537E1ADE67D500F81DF0 /* AppDelegate.swift in Sources */,
+				C95344221DE6264400F046F7 /* CustomSegue.swift in Sources */,
 				2CA807BC1B21702E009AD7F2 /* MeasurementHelper.swift in Sources */,
 				2C595F061B34B73A00355AE7 /* Constants.swift in Sources */,
+				C98BBF761DE629F600254542 /* LineTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
