@@ -122,12 +122,19 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
             dataEntries.append(dataEntry)
         }
         
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Units Sold")
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Water consumed")
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         
         pieChartDataSet.colors = [UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1),
                                   UIColor(red: 254/255, green: 200/255, blue: 134/255, alpha: 1)]
+        pieChartView.holeRadiusPercent = 0.95
+        let myString = "Testing"
+        let myAttribute = [ NSForegroundColorAttributeName: UIColor.blueColor(),
+                            NSFontAttributeName: UIFont(name: "Helvetica Light", size: 52.0)!]
+        let myAttrString = NSAttributedString(string: myString, attributes: myAttribute)
+        pieChartView.centerAttributedText = myAttrString
+        
         //pieChartDataSet.colors = ChartColorTemplates.liberty()
         
     }
@@ -135,6 +142,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
   func configureDatabase() {
     ref = FIRDatabase.database().reference()
     // Listen for new messages in the Firebase database
+    // This is the part that executes everytime a new data is fetched from Firebase
     _refHandle = self.ref.child("messages").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
       self.messages.append(snapshot)
       self.clientTable.insertRowsAtIndexPaths([NSIndexPath(forRow: self.messages.count-1, inSection: 0)], withRowAnimation: .Automatic)
@@ -236,7 +244,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         let cell: UITableViewCell! = self.clientTable.dequeueReusableCellWithIdentifier("ClientCell", forIndexPath: indexPath)
         // Unpack message from Firebase DataSnapshot
         
-        // changed vvv
+        
         //print statements are there just to check the data...
         let messageSnapshot: FIRDataSnapshot! = self.messages[indexPath.row]
         //print(messageSnapshot)
@@ -245,7 +253,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         let date = message.objectForKey("date") as! String
         let time = message.objectForKey("time") as! String
         //print(date)
-        // changed ^^^
+       
         
         if let imageUrl = message[Constants.MessageFields.imageUrl] {
             if imageUrl.hasPrefix("gs://") {
