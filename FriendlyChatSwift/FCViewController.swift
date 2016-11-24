@@ -47,8 +47,10 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     
     @IBOutlet weak var recordsButton: UIButton!
     
-    @IBAction func recordsButtonAction(sender: UIButton) {
-        self.performSegueWithIdentifier("show", sender: UIButton.self)
+
+    @IBAction func showRecords(sender: UIButton) {
+        
+         self.performSegueWithIdentifier("show", sender: UIButton.self)
     }
     
     
@@ -73,6 +75,8 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
 
     self.clientTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "tableViewCell")
 
@@ -298,7 +302,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
                     }
                     cell.imageView?.image = UIImage.init(data: data!)
                 }
-            } else if let url = NSURL(string:imageUrl as! String), data = NSData(contentsOfURL: url) {
+            } else if let url = NSURL(string:imageUrl as! String), let data = NSData(contentsOfURL: url) {
                 cell.imageView?.image = UIImage.init(data: data)
             }
             cell!.textLabel?.text = "sent by: \(date)"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zxq-GO-nHP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="HTv-6h-Llx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -116,6 +116,7 @@
                             <constraint firstItem="qDo-1s-Eg5" firstAttribute="leading" secondItem="OTh-0Q-7iK" secondAttribute="leadingMargin" constant="71" id="wFB-3p-hT0"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="s8j-62-IXU"/>
                     <connections>
                         <outlet property="emailField" destination="Ck6-X0-2bF" id="A7h-rs-20h"/>
                         <outlet property="passwordField" destination="P5K-Hg-cFo" id="8eP-5T-MqH"/>
@@ -125,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txP-jG-AoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-55.200000000000003" y="52.623688155922046"/>
+            <point key="canvasLocation" x="884" y="52.623688155922046"/>
         </scene>
         <!--FPViewController-->
         <scene sceneID="moX-1M-48c">
@@ -231,7 +232,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="weekly records"/>
                                 <connections>
-                                    <segue destination="JiF-rd-ZRD" kind="show" id="K68-i6-T8p"/>
+                                    <action selector="showRecords:" destination="uMT-A3-F60" eventType="touchUpInside" id="vVo-g4-wZg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -264,12 +265,13 @@
                         <outlet property="dailyGoalLabel" destination="w6P-m9-k5g" id="SCc-53-dOM"/>
                         <outlet property="dailyGoalValueLabel" destination="jAE-VH-iFZ" id="jnp-GB-rdO"/>
                         <outlet property="pieChartView" destination="mGJ-UK-rIG" id="kT5-Il-IsF"/>
-                        <outlet property="recordsButton" destination="psC-Mr-C1c" id="u4g-Va-Z9w"/>
+                        <outlet property="recordsButton" destination="psC-Mr-C1c" id="ANs-Gt-IcW"/>
+                        <segue destination="JiF-rd-ZRD" kind="show" identifier="show" id="Jtf-3K-WuS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLT-eE-jeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="53"/>
+            <point key="canvasLocation" x="1744.8" y="52.623688155922046"/>
         </scene>
         <!--Line Chart View Controller-->
         <scene sceneID="PAn-3k-v4d">
@@ -283,28 +285,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFn-sQ-WsB">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFn-sQ-WsB">
+                                <rect key="frame" x="22" y="18" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="C9v-6q-xv6"/>
+                                    <constraint firstAttribute="height" constant="35" id="kWh-95-2Ql"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="cancel"/>
                                 <connections>
                                     <action selector="pressedCancel:" destination="JiF-rd-ZRD" eventType="touchUpInside" id="vTo-v4-i1H"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Got-dc-Mnr" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="22.5" y="168.5" width="330" height="330"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="330" id="a7A-72-Ymu"/>
+                                    <constraint firstAttribute="width" constant="330" id="e3b-Qe-nah"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerX" secondItem="cCl-Qd-jOx" secondAttribute="centerX" id="AYD-B4-wVT"/>
-                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerY" secondItem="cCl-Qd-jOx" secondAttribute="centerY" id="j5X-O8-nAq"/>
+                            <constraint firstItem="Got-dc-Mnr" firstAttribute="centerY" secondItem="cCl-Qd-jOx" secondAttribute="centerY" id="8Ef-5B-bcD"/>
+                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerX" secondItem="cCl-Qd-jOx" secondAttribute="centerX" constant="-148.5" id="AYD-B4-wVT"/>
+                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerY" secondItem="cCl-Qd-jOx" secondAttribute="centerY" constant="-298.5" id="j5X-O8-nAq"/>
+                            <constraint firstItem="Got-dc-Mnr" firstAttribute="centerX" secondItem="cCl-Qd-jOx" secondAttribute="centerX" id="odi-rw-5DV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="LineChart" destination="Got-dc-Mnr" id="koy-OY-ksN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isR-oG-ToD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="48"/>
+            <point key="canvasLocation" x="2512.8000000000002" y="52.623688155922046"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5HH-sW-jzo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HTv-6h-Llx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bZA-iR-8p9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zxq-GO-nHP" kind="relationship" relationship="rootViewController" id="Mne-Pk-Ref"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r9t-nk-l7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55.200000000000003" y="52.623688155922046"/>
         </scene>
     </scenes>
     <resources>
         <image name="alarm" width="40" height="40"/>
+        <image name="cancel" width="113" height="113"/>
         <image name="logo" width="242" height="71"/>
         <image name="setting" width="40" height="40"/>
     </resources>

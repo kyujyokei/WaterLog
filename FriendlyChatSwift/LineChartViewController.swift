@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import Charts
+
 
 class LineChartViewController: UIViewController {
+    
+    @IBOutlet weak var LineChart: LineChartView!
+    
     @IBAction func pressedCancel(sender: UIButton) {
-        self.
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+        
+        setChart(months, values: unitsSold)
 
         // Do any additional setup after loading the view.
     }
@@ -24,6 +36,39 @@ class LineChartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setChart(dataPoints: [String], values: [Double]) {
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        
+        var colors: [UIColor] = []
+        
+        for i in 0..<dataPoints.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            
+            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }
+        
+
+        let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Water Consumed")
+        let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
+        LineChart.data = lineChartData
+        LineChart.animate(yAxisDuration: 1)
+        
+        let ll = ChartLimitLine(limit: 10.0, label: "Target")
+        LineChart.rightAxis.addLimitLine(ll)
+        
+    }
+
+
 
     /*
     // MARK: - Navigation

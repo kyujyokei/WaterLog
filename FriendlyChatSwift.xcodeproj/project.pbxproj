@@ -25,8 +25,48 @@
 		C953441C1DE6198A00F046F7 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344171DE6198A00F046F7 /* Roboto-Thin.ttf */; };
 		C95344221DE6264400F046F7 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95344211DE6264400F046F7 /* CustomSegue.swift */; };
 		C964C2141D80050E00A7E3BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */; };
+		C9D0AD971DE70E990041FA18 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D0AD901DE70E930041FA18 /* Charts.framework */; };
+		C9D0AD981DE70E990041FA18 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C9D0AD901DE70E930041FA18 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D6902531E3B1713D79326E07 /* Pods_FriendlyChatSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 326FFA62113E19F168A107ED /* Pods_FriendlyChatSwift.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9D0AD8F1DE70E930041FA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		C9D0AD911DE70E930041FA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		C9D0AD931DE70E930041FA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06B120D51D811E6200D14B02;
+			remoteInfo = ChartsRealm;
+		};
+		C9D0AD951DE70E930041FA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06B120FF1D811F1600D14B02;
+			remoteInfo = ChartsRealmTests;
+		};
+		C9D0AD991DE70E990041FA18 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C9AAFDDA1DCCA160008F6055 /* Embed Frameworks */ = {
@@ -35,6 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C9D0AD981DE70E990041FA18 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +107,7 @@
 		C95344171DE6198A00F046F7 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		C95344211DE6264400F046F7 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-2.3.0 拷貝/Charts.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6902531E3B1713D79326E07 /* Pods_FriendlyChatSwift.framework in Frameworks */,
+				C9D0AD971DE70E990041FA18 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +144,7 @@
 		5F5A53431ADE670C00F81DF0 = {
 			isa = PBXGroup;
 			children = (
+				C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */,
 				C964C2131D80050E00A7E3BF /* GoogleService-Info.plist */,
 				C95344121DE618BA00F046F7 /* Fonts */,
 				2C85627A1AFAB65F00F0B24B /* shared */,
@@ -166,6 +210,17 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		C9D0AD891DE70E930041FA18 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9D0AD901DE70E930041FA18 /* Charts.framework */,
+				C9D0AD921DE70E930041FA18 /* ChartsTests.xctest */,
+				C9D0AD941DE70E930041FA18 /* ChartsRealm.framework */,
+				C9D0AD961DE70E930041FA18 /* ChartsRealmTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,6 +239,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C9D0AD9A1DE70E990041FA18 /* PBXTargetDependency */,
 			);
 			name = FriendlyChatSwift;
 			productName = FriendlyPingSwift;
@@ -223,12 +279,49 @@
 			mainGroup = 5F5A53431ADE670C00F81DF0;
 			productRefGroup = 5F5A534D1ADE670C00F81DF0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C9D0AD891DE70E930041FA18 /* Products */;
+					ProjectRef = C9D0AD881DE70E930041FA18 /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				5F5A53781ADE67D500F81DF0 /* FriendlyChatSwift */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C9D0AD901DE70E930041FA18 /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = C9D0AD8F1DE70E930041FA18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9D0AD921DE70E930041FA18 /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = C9D0AD911DE70E930041FA18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9D0AD941DE70E930041FA18 /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = C9D0AD931DE70E930041FA18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C9D0AD961DE70E930041FA18 /* ChartsRealmTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsRealmTests.xctest;
+			remoteRef = C9D0AD951DE70E930041FA18 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5F5A53771ADE67D500F81DF0 /* Resources */ = {
@@ -315,6 +408,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9D0AD9A1DE70E990041FA18 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = C9D0AD991DE70E990041FA18 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		107960711C612531003DB6CC /* Main.storyboard */ = {
