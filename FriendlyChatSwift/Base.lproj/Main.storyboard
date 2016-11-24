@@ -237,7 +237,6 @@
                                 <state key="normal" title="weekly records"/>
                                 <connections>
                                     <action selector="recordsButtonAction:" destination="uMT-A3-F60" eventType="touchUpInside" id="ZJq-ID-rdV"/>
-                                    <segue destination="2ug-r2-bgQ" kind="show" customClass="CustomSegue" customModule="FriendlyChatSwift" customModuleProvider="target" id="oLX-qp-EhM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -271,6 +270,7 @@
                         <outlet property="dailyGoalValueLabel" destination="jAE-VH-iFZ" id="jnp-GB-rdO"/>
                         <outlet property="pieChartView" destination="mGJ-UK-rIG" id="kT5-Il-IsF"/>
                         <outlet property="recordsButton" destination="psC-Mr-C1c" id="u4g-Va-Z9w"/>
+                        <segue destination="pRl-Et-aDJ" kind="show" identifier="show" customClass="CustomSegue" customModule="FriendlyChatSwift" customModuleProvider="target" id="BAQ-ZC-Nay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLT-eE-jeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,32 +278,35 @@
             <point key="canvasLocation" x="807" y="53"/>
         </scene>
         <!--Line Table View Controller-->
-        <scene sceneID="nze-iV-1j7">
+        <scene sceneID="uLk-pN-BP7">
             <objects>
-                <viewController id="2ug-r2-bgQ" customClass="LineTableViewController" customModule="FriendlyChatSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pRl-Et-aDJ" customClass="LineTableViewController" customModule="FriendlyChatSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8cP-EO-73Z"/>
-                        <viewControllerLayoutGuide type="bottom" id="mvF-h7-5dk"/>
+                        <viewControllerLayoutGuide type="top" id="3j8-kA-mz7"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nkc-KU-TyP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8Ih-rs-MWP">
+                    <view key="view" contentMode="scaleToFill" id="LBR-DD-lwu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kQ-B7-ZRW">
-                                <rect key="frame" x="32" y="39" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-Mt-tlh">
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="pRl-Et-aDJ" eventType="touchUpInside" id="QPP-2B-Gkc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1kQ-B7-ZRW" firstAttribute="top" secondItem="8cP-EO-73Z" secondAttribute="bottom" constant="19" id="DvI-7l-VFF"/>
-                            <constraint firstItem="1kQ-B7-ZRW" firstAttribute="leading" secondItem="8Ih-rs-MWP" secondAttribute="leadingMargin" constant="16" id="fab-tu-Tgd"/>
+                            <constraint firstItem="HHR-Mt-tlh" firstAttribute="centerX" secondItem="LBR-DD-lwu" secondAttribute="centerX" id="LwY-Ow-ihT"/>
+                            <constraint firstItem="HHR-Mt-tlh" firstAttribute="centerY" secondItem="LBR-DD-lwu" secondAttribute="centerY" id="Skc-9n-pTT"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rbh-ge-7Z9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49s-oZ-nhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="52.623688155922046"/>
+            <point key="canvasLocation" x="1552.8" y="51.724137931034484"/>
         </scene>
     </scenes>
     <resources>

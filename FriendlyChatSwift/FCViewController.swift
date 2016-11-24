@@ -39,6 +39,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var dailyGoalValueLabel: UILabel!
     
     @IBAction func alarmButtonAction(sender: UIButton) {
+        
     }
     
     @IBAction func settingButtonAction(sender: UIButton) {
@@ -47,6 +48,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var recordsButton: UIButton!
     
     @IBAction func recordsButtonAction(sender: UIButton) {
+        self.performSegueWithIdentifier("show", sender: UIButton.self)
     }
     
     
