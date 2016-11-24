@@ -231,7 +231,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="weekly records"/>
                                 <connections>
-                                    <action selector="recordsButtonAction:" destination="uMT-A3-F60" eventType="touchUpInside" id="ZJq-ID-rdV"/>
+                                    <segue destination="JiF-rd-ZRD" kind="show" id="K68-i6-T8p"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -265,43 +265,42 @@
                         <outlet property="dailyGoalValueLabel" destination="jAE-VH-iFZ" id="jnp-GB-rdO"/>
                         <outlet property="pieChartView" destination="mGJ-UK-rIG" id="kT5-Il-IsF"/>
                         <outlet property="recordsButton" destination="psC-Mr-C1c" id="u4g-Va-Z9w"/>
-                        <segue destination="pRl-Et-aDJ" kind="show" identifier="show" customClass="CustomSegue" customModule="FriendlyChatSwift" customModuleProvider="target" id="BAQ-ZC-Nay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLT-eE-jeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="807" y="53"/>
         </scene>
-        <!--Line Table View Controller-->
-        <scene sceneID="uLk-pN-BP7">
+        <!--Line Chart View Controller-->
+        <scene sceneID="PAn-3k-v4d">
             <objects>
-                <viewController id="pRl-Et-aDJ" customClass="LineTableViewController" customModule="FriendlyChatSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JiF-rd-ZRD" customClass="LineChartViewController" customModule="FriendlyChatSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3j8-kA-mz7"/>
-                        <viewControllerLayoutGuide type="bottom" id="Nkc-KU-TyP"/>
+                        <viewControllerLayoutGuide type="top" id="ZML-tr-rmc"/>
+                        <viewControllerLayoutGuide type="bottom" id="78Z-ny-7Lr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LBR-DD-lwu">
+                    <view key="view" contentMode="scaleToFill" id="cCl-Qd-jOx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHR-Mt-tlh">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFn-sQ-WsB">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="cancelButtonAction:" destination="pRl-Et-aDJ" eventType="touchUpInside" id="QPP-2B-Gkc"/>
+                                    <action selector="pressedCancel:" destination="JiF-rd-ZRD" eventType="touchUpInside" id="vTo-v4-i1H"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HHR-Mt-tlh" firstAttribute="centerX" secondItem="LBR-DD-lwu" secondAttribute="centerX" id="LwY-Ow-ihT"/>
-                            <constraint firstItem="HHR-Mt-tlh" firstAttribute="centerY" secondItem="LBR-DD-lwu" secondAttribute="centerY" id="Skc-9n-pTT"/>
+                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerX" secondItem="cCl-Qd-jOx" secondAttribute="centerX" id="AYD-B4-wVT"/>
+                            <constraint firstItem="JFn-sQ-WsB" firstAttribute="centerY" secondItem="cCl-Qd-jOx" secondAttribute="centerY" id="j5X-O8-nAq"/>
                         </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="49s-oZ-nhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isR-oG-ToD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1552.8" y="51.724137931034484"/>
+            <point key="canvasLocation" x="1548" y="48"/>
         </scene>
     </scenes>
     <resources>
