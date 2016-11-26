@@ -29,7 +29,7 @@ class SignInViewController: UIViewController {
 
   override func viewDidAppear(animated: Bool) {
     
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    //self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"logbg")!)
     let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)

@@ -39,17 +39,17 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var dailyGoalValueLabel: UILabel!
     
     @IBAction func alarmButtonAction(sender: UIButton) {
-        
+        self.performSegueWithIdentifier("alarmSegue", sender: UIButton.self)
     }
     
     @IBAction func settingButtonAction(sender: UIButton) {
+        self.performSegueWithIdentifier("settingSegue", sender: UIButton.self)
     }
     
     @IBOutlet weak var recordsButton: UIButton!
     
 
     @IBAction func showRecords(sender: UIButton) {
-        
          self.performSegueWithIdentifier("show", sender: UIButton.self)
     }
     
@@ -76,7 +76,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.navigationController?.setNavigationBarHidden(true, animated: true)
+    //self.navigationController?.setNavigationBarHidden(true, animated: true)
 
     self.clientTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "tableViewCell")
 

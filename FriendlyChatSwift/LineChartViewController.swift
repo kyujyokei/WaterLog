@@ -15,7 +15,7 @@ class LineChartViewController: UIViewController {
     @IBOutlet weak var LineChart: LineChartView!
     
     @IBAction func pressedCancel(sender: UIButton) {
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func viewDidLoad() {
