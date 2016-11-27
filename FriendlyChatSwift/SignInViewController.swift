@@ -26,10 +26,14 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var signInButton: UIButton!
     
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
 
   override func viewDidAppear(animated: Bool) {
     
-    //self.navigationController?.setNavigationBarHidden(true, animated: true)
+    self.navigationController?.setNavigationBarHidden(true, animated: true)
     
     //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"logbg")!)
     let backgroundImage = UIImageView(frame: UIScreen.mainScreen().bounds)

@@ -76,7 +76,8 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    //self.navigationController?.setNavigationBarHidden(true, animated: true)
+    self.navigationController?.setNavigationBarHidden(false, animated: true)
+    self.navigationItem.title = "Main"
 
     self.clientTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "tableViewCell")
 
