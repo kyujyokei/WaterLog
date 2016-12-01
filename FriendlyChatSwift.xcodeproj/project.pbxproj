@@ -19,6 +19,7 @@
 		C90069561DE969140034C4D8 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90069551DE969140034C4D8 /* AlarmViewController.swift */; };
 		C900695A1DEA002C0034C4D8 /* settingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90069591DEA002C0034C4D8 /* settingsTableViewController.swift */; };
 		C9277ACF1DE6D51800753788 /* LineChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9277ACE1DE6D51800753788 /* LineChartViewController.swift */; };
+		C9468AFB1DF07A5400440AC6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9468AFA1DF07A5400440AC6 /* SettingsViewController.swift */; };
 		C95344111DE6037C00F046F7 /* Fashion Fetish Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344101DE6037C00F046F7 /* Fashion Fetish Light.ttf */; };
 		C95344181DE6198A00F046F7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344131DE6198A00F046F7 /* Roboto-Bold.ttf */; };
 		C95344191DE6198A00F046F7 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C95344141DE6198A00F046F7 /* Roboto-Light.ttf */; };
@@ -103,6 +104,7 @@
 		C90069551DE969140034C4D8 /* AlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		C90069591DEA002C0034C4D8 /* settingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsTableViewController.swift; sourceTree = "<group>"; };
 		C9277ACE1DE6D51800753788 /* LineChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartViewController.swift; sourceTree = "<group>"; };
+		C9468AFA1DF07A5400440AC6 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C95344101DE6037C00F046F7 /* Fashion Fetish Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fashion Fetish Light.ttf"; sourceTree = "<group>"; };
 		C95344131DE6198A00F046F7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		C95344141DE6198A00F046F7 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				C90069551DE969140034C4D8 /* AlarmViewController.swift */,
 				C90069591DEA002C0034C4D8 /* settingsTableViewController.swift */,
 				C9277ACE1DE6D51800753788 /* LineChartViewController.swift */,
+				C9468AFA1DF07A5400440AC6 /* SettingsViewController.swift */,
 				2C8E6C2A1B16875B0073CE3D /* SignInViewController.swift */,
 				2CA807BD1B217B21009AD7F2 /* AppState.swift */,
 				2C595F041B34B73A00355AE7 /* Constants.swift */,
@@ -404,6 +407,7 @@
 			files = (
 				2C8E6C2B1B16875B0073CE3D /* SignInViewController.swift in Sources */,
 				C9277ACF1DE6D51800753788 /* LineChartViewController.swift in Sources */,
+				C9468AFB1DF07A5400440AC6 /* SettingsViewController.swift in Sources */,
 				C900695A1DEA002C0034C4D8 /* settingsTableViewController.swift in Sources */,
 				2CA807BE1B217B21009AD7F2 /* AppState.swift in Sources */,
 				5F5A53801ADE67D500F81DF0 /* FCViewController.swift in Sources */,
