@@ -186,8 +186,8 @@
                                     <outlet property="delegate" destination="uMT-A3-F60" id="cjd-Hd-tIf"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-VH-iFZ">
-                                <rect key="frame" x="31" y="142" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000ml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAE-VH-iFZ">
+                                <rect key="frame" x="31" y="142" width="60" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -235,6 +235,13 @@
                                     <action selector="showRecords:" destination="uMT-A3-F60" eventType="touchUpInside" id="vVo-g4-wZg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3y9-Hr-5Qb">
+                                <rect key="frame" x="166" y="376" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -260,12 +267,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alarmButton" destination="Yvb-OQ-B3p" id="PBY-GS-sij"/>
                         <outlet property="banner" destination="9C0-fE-spr" id="NlI-Px-SJT"/>
                         <outlet property="clientTable" destination="DHD-HU-kCB" id="VEb-Fb-vE0"/>
                         <outlet property="dailyGoalLabel" destination="w6P-m9-k5g" id="SCc-53-dOM"/>
                         <outlet property="dailyGoalValueLabel" destination="jAE-VH-iFZ" id="jnp-GB-rdO"/>
                         <outlet property="pieChartView" destination="mGJ-UK-rIG" id="kT5-Il-IsF"/>
                         <outlet property="recordsButton" destination="psC-Mr-C1c" id="ANs-Gt-IcW"/>
+                        <outlet property="settingsButton" destination="aaH-I0-NOh" id="iRy-E8-2sr"/>
                         <segue destination="JiF-rd-ZRD" kind="show" identifier="show" id="Jtf-3K-WuS"/>
                         <segue destination="Jna-0h-UDF" kind="show" identifier="alarmSegue" id="lhr-Oe-Do8"/>
                         <segue destination="59A-jr-FxF" kind="show" identifier="settingSegue" id="Zst-tn-heR"/>
@@ -321,7 +330,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isR-oG-ToD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2513" y="-687"/>
+            <point key="canvasLocation" x="2513" y="-1011"/>
         </scene>
         <!--Alarm View Controller-->
         <scene sceneID="t9t-OM-rq7">
@@ -370,17 +379,17 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gq-Hh-lfZ">
-                                <rect key="frame" x="210" y="231.5" width="39" height="30"/>
+                                <rect key="frame" x="210" y="232" width="39" height="30"/>
                                 <state key="normal" title="18:00"/>
                                 <connections>
                                     <action selector="endBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="Bzt-AR-2T4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEt-n1-yXr">
-                                <rect key="frame" x="210" y="282.5" width="45" height="30"/>
+                                <rect key="frame" x="210" y="283" width="45" height="30"/>
                                 <state key="normal" title="1 Hour"/>
                                 <connections>
-                                    <action selector="intervalBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="ehj-a3-6Wm"/>
+                                    <action selector="intervalBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="rjl-W1-9Lt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsC-6M-9Af">
@@ -410,6 +419,15 @@
                                     <action selector="startBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="xwc-V3-FZu"/>
                                 </connections>
                             </button>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1u-B7-0nj">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="bFp-aa-T0l">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -443,19 +461,73 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="PopUpView" destination="Kk0-Qk-NZ8" id="l73-AV-Ndh"/>
                         <outlet property="alarmSwitch" destination="5qS-9e-LcU" id="aB7-Ex-EDS"/>
                         <outlet property="alarmTableView" destination="CgS-eZ-73g" id="oD8-GS-Wbe"/>
                         <outlet property="customButton" destination="pTp-Ln-ZEu" id="ONl-sQ-dEJ"/>
                         <outlet property="customLabel" destination="lZQ-g3-Prx" id="vRT-9S-8BE"/>
+                        <outlet property="datePickerView" destination="7xf-xG-soE" id="fKb-Wa-x4v"/>
                         <outlet property="endButton" destination="8Gq-Hh-lfZ" id="Jjw-v5-utw"/>
                         <outlet property="endLabel" destination="qVy-P0-Oj2" id="pF7-Cs-O3F"/>
                         <outlet property="intervalButton" destination="KEt-n1-yXr" id="gYy-hK-ROc"/>
                         <outlet property="intervalLabel" destination="Whl-ww-wsf" id="d5c-x5-Qq0"/>
                         <outlet property="startButton" destination="64a-oA-go4" id="djR-8z-bK6"/>
                         <outlet property="startLabel" destination="wAC-6V-r9w" id="bnG-6D-TDB"/>
+                        <outlet property="timeIntervalView" destination="sG1-hv-eZT" id="gVU-h6-6lg"/>
+                        <outlet property="visualEffectView" destination="b1u-B7-0nj" id="ebE-5U-CWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wEJ-8j-QQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Kk0-Qk-NZ8">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-xG-soE">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="216"/>
+                            <date key="date" timeIntervalSinceReferenceDate="502202233.355097">
+                                <!--2016-11-30 12:37:13 +0000-->
+                            </date>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ng-qE-cvM">
+                            <rect key="frame" x="132" y="208" width="37" height="30"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="timeDoneBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="A5e-UD-Ruc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7xf-xG-soE" secondAttribute="trailing" id="2r1-na-OjQ"/>
+                        <constraint firstItem="7xf-xG-soE" firstAttribute="leading" secondItem="Kk0-Qk-NZ8" secondAttribute="leading" id="AAV-S4-Eil"/>
+                        <constraint firstItem="0ng-qE-cvM" firstAttribute="centerX" secondItem="Kk0-Qk-NZ8" secondAttribute="centerX" id="ijP-9z-rfZ"/>
+                        <constraint firstItem="7xf-xG-soE" firstAttribute="top" secondItem="Kk0-Qk-NZ8" secondAttribute="top" id="tU0-8V-4Ds"/>
+                        <constraint firstAttribute="bottom" secondItem="0ng-qE-cvM" secondAttribute="bottom" constant="12" id="uVg-8R-FHw"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="sG1-hv-eZT">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="250"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLw-df-0tc">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="202"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <connections>
+                                <outlet property="dataSource" destination="Jna-0h-UDF" id="kQ7-9P-urY"/>
+                                <outlet property="delegate" destination="Jna-0h-UDF" id="Zat-yw-0yN"/>
+                            </connections>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6f-5n-2P9">
+                            <rect key="frame" x="132" y="206" width="37" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="intervalDoneBtnAction:" destination="Jna-0h-UDF" eventType="touchUpInside" id="LHj-4b-Rd7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2512.8000000000002" y="52.623688155922046"/>
         </scene>

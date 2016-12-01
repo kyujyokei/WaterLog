@@ -72,9 +72,18 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
   @IBOutlet weak var banner: GADBannerView!
   @IBOutlet weak var clientTable: UITableView!
 
+    @IBOutlet weak var alarmButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    alarmButton.backgroundColor = UIColor.clearColor()
+    alarmButton.layer.cornerRadius = 15
+    alarmButton.clipsToBounds = true
+    settingsButton.backgroundColor = UIColor.clearColor()
+    settingsButton.layer.cornerRadius = 15
+    settingsButton.clipsToBounds = true
     
     self.navigationController?.setNavigationBarHidden(false, animated: true)
     self.navigationItem.title = "Main"
@@ -116,7 +125,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     func calculateConsumption(){
         //print(weightRecord)
         
-
+        var total:Double = 0
         
         var i = 0
         repeat {
@@ -124,10 +133,15 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
             if i >= 1{
                 let weightLoss:Double = weightRecord[i] - weightRecord[i-1]
                 print("WEIGHT LOSS:\(weightLoss)")
-                waterConsumed = waterConsumed - weightLoss
+                if weightLoss < 0{
+                    total += weightLoss
+                    
+                }
             }
             i = i + 1
         } while i < weightRecord.count
+        
+        waterConsumed = -total
         
         print("********WEIGHT RECORD:\(weightRecord)")
         print("********WATER CONSUMED:\(waterConsumed)")
@@ -177,7 +191,9 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         //pieChartView.animate(xAxisDuration: 1)
         
     }
+    
 
+    
   func configureDatabase() {
     ref = FIRDatabase.database().reference()
     // Listen for new messages in the Firebase database
