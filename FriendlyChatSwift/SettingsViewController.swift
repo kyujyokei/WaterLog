@@ -14,12 +14,16 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var heightButton: UIButton!
     @IBOutlet weak var trainSwitch: UISwitch!
     @IBOutlet weak var goalLabel: UILabel!
-    
+    @IBOutlet weak var silder: UISlider!
     @IBOutlet var popUpView: UIView!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
-    var dailyGoal = 1500
+    var effect :UIVisualEffect!
     
+    var dailyGoal = 2000
+    var yourWeight = 50
+    var yourHeight = 150
     
     enum pickerName{
         case height
@@ -33,19 +37,26 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBAction func weightBtnAction(sender: UIButton) {
         currentPicker = .weight
-        pickerView.reloadAllComponents()
         pickerView.selectRow(20, inComponent: 0, animated: false)
         animateIn()
     }
     
     @IBAction func heightBtnAction(sender: UIButton) {
         currentPicker  = .height
-        pickerView.reloadAllComponents()
         pickerView.selectRow(50, inComponent: 0, animated: false)
         animateIn()
     }
     
     @IBAction func switchAction(sender: UISwitch) {
+        if trainSwitch.on == true {
+            dailyGoal = dailyGoal + 500
+            goalLabel.text = String(Int(dailyGoal)) + "ml"
+            silder.value = Float(dailyGoal)
+        } else {
+            dailyGoal = dailyGoal - 500
+            goalLabel.text = String(Int(dailyGoal)) + "ml"
+            silder.value = Float(dailyGoal)
+        }
     }
     
     @IBAction func sliderAction(sender: UISlider) {
@@ -57,9 +68,13 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         animateOut()
     }
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
 
         goalLabel.text = String(dailyGoal) + "ml"
         popUpView.layer.cornerRadius = 5
@@ -67,7 +82,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func animateIn(){
-        
+        pickerView.reloadAllComponents()
         //if the view is for setting start or end time
         self.view.addSubview(popUpView)
         popUpView.center = self.view.center
@@ -76,17 +91,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         popUpView.alpha = 0
         
         UIView.animateWithDuration(0.4, animations: {
-            //                self.visualEffectView.effect = self.effect
-            //                self.visualEffectView.alpha = 1
+            self.visualEffectView.effect = self.effect
+            self.visualEffectView.alpha = 1
             self.popUpView.alpha = 1
             self.popUpView.transform = CGAffineTransformIdentity
-            
-            //                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-            //                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            //                blurEffectView.frame = self.view.bounds
-            //                blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            //                self.view.addSubview(blurEffectView)
-            
         })
         
     }
@@ -95,8 +103,8 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         UIView.animateWithDuration(0.3, animations: {
             
-            //            self.visualEffectView.effect = nil
-            //            self.visualEffectView.alpha = 0
+            self.visualEffectView.effect = nil
+            self.visualEffectView.alpha = 0
             
             self.popUpView.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.popUpView.alpha = 0
@@ -105,6 +113,25 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         })
 
         
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if currentPicker == .height {
+            yourHeight = heightArray[row]
+            heightButton.setTitle(String(heightArray[row])+" cm", forState: .Normal)
+        } else {
+            yourWeight = weightArray[row]
+            weightButton.setTitle(String(weightArray[row])+" kg", forState: .Normal)
+        }
+        
+        let result = (yourHeight + yourWeight)*10
+        dailyGoal = result
+        if trainSwitch.on == true{
+            dailyGoal = dailyGoal + 500
+        }
+        silder.value = Float(dailyGoal)
+        goalLabel.text = String(dailyGoal)
     }
     
     
