@@ -8,11 +8,33 @@
 
 import UIKit
 
-class AlarmViewController: UIViewController, UIPickerViewDataSource {
+class AlarmViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var timeIntervalView: UIView!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var intervalLabel: UILabel!
+    @IBOutlet weak var customLabel: UILabel!
+    @IBOutlet weak var customButton: UIButton!
+    @IBOutlet weak var alarmSwitch: UISwitch!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var intervalButton: UIButton!
+    
+    enum popUpName{
+        case interval
+        case start
+        case end
+        case custom
+    }
+    
+    let timeIntervals = ["1 hour","2 hours","3 hours","4 hours"]
     
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     var effect :UIVisualEffect!
+    var currentPopUpView = popUpName.start
+    var customDateArray = [NSDate]()
     
     @IBOutlet var datePickerView: UIDatePicker!
     
@@ -25,17 +47,23 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
     @IBAction func intervalDoneBtnAction(sender: UIButton) {
         animateOut("interval")
     }
-
-    @IBOutlet var timeIntervalView: UIView!
-    @IBOutlet weak var startLabel: UILabel!
-    @IBOutlet weak var endLabel: UILabel!
-    @IBOutlet weak var intervalLabel: UILabel!
-    @IBOutlet weak var customLabel: UILabel!
-    @IBOutlet weak var customButton: UIButton!
-    @IBOutlet weak var alarmSwitch: UISwitch!
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var endButton: UIButton!
-    @IBOutlet weak var intervalButton: UIButton!
+    
+    @IBAction func datePickerAction(sender: AnyObject) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        //dateFormatter.timeStyle = .ShortStyle
+        
+        let strDate = dateFormatter.stringFromDate(datePickerView.date)
+        if currentPopUpView == .start {
+            startButton.setTitle(strDate, forState: .Normal)
+        } else if currentPopUpView == .end {
+            endButton.setTitle(strDate, forState: .Normal)
+        } else if currentPopUpView == .custom{
+            
+        }
+        
+    }
+    
     @IBAction func alarmSwitchAction(sender: UISwitch) {
         
         if alarmSwitch.on == true {
@@ -66,16 +94,25 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
     }
     
     @IBAction func startBtnAction(sender: UIButton) {
-        animateIn("start")
+        currentPopUpView = .start
+        animateIn()
     }
     
     @IBAction func endBtnAction(sender: UIButton) {
-        animateIn("end")
+        currentPopUpView = .end
+        animateIn()
     }
     
     @IBAction func intervalBtnAction(sender: UIButton) {
-        animateIn("interval")
+        currentPopUpView = .interval
+        animateIn()
     }
+    
+    @IBAction func customBtnAction(sender: UIButton) {
+        currentPopUpView = .custom
+        animateIn()
+    }
+    
     
     @IBOutlet weak var alarmTableView: UITableView!
     
@@ -102,10 +139,12 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
         
         alarmSwitch.onTintColor = UIColor.blueColor()
         
+        alarmTableView.tableFooterView = UIView()
+        
     }
     
-    func animateIn(viewName:String){
-        if viewName == "start" || viewName == "end"  {
+    func animateIn(){
+        if currentPopUpView == .start || currentPopUpView == .end || currentPopUpView == .custom {
         //if the view is for setting start or end time
             self.view.addSubview(PopUpView)
             PopUpView.center = self.view.center
@@ -119,7 +158,7 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
                 self.PopUpView.alpha = 1
                 self.PopUpView.transform = CGAffineTransformIdentity
             })
-        } else if viewName == "interval"  {
+        } else if currentPopUpView == .interval {
         //if the view is for setting time interval
             self.view.addSubview(timeIntervalView)
             timeIntervalView.center = self.view.center
@@ -141,15 +180,20 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
        
         UIView.animateWithDuration(0.3, animations: {
             
+            if self.currentPopUpView == .custom{
+                self.customDateArray.append(self.datePickerView.date)
+                self.alarmTableView.reloadData()
+            }
+            //print(self.customDateArray)
             self.visualEffectView.effect = nil
             self.visualEffectView.alpha = 0
             
-            if viewName == "start" || viewName == "end" {
+            if self.currentPopUpView == .start || self.currentPopUpView == .end || self.currentPopUpView == .custom{
             
                 self.PopUpView.transform = CGAffineTransformMakeScale(1.3, 1.3)
                 self.PopUpView.alpha = 0
                 self.PopUpView.removeFromSuperview()
-            } else if viewName == "interval"{
+            } else if self.currentPopUpView == .interval {
                 
                 self.timeIntervalView.transform = CGAffineTransformMakeScale(1.3, 1.3)
                 self.timeIntervalView.alpha = 0
@@ -169,15 +213,51 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        return 4
     }
-
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return timeIntervals[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        intervalButton.setTitle(timeIntervals[row], forState: .Normal)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return customDateArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "TimeListCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let strDate = dateFormatter.stringFromDate(customDateArray[indexPath.row])
+        cell.textLabel?.text = "\(strDate)"
+        return cell
+    }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            customDateArray.removeAtIndex(indexPath.row)
+            alarmTableView.reloadData()
+        }
+    }
 
     /*
     // MARK: - Navigation

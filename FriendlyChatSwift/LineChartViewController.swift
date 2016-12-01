@@ -23,8 +23,8 @@ class LineChartViewController: UIViewController {
         
         //self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+        let months = ["Sat", "Sun", "Mon", "Tue", "Wed", "Today"]
+        let unitsSold = [2204.0, 1987.0, 2017.0, 1598.0, 2202.0, 657.0]
         
         setChart(months, values: unitsSold)
 
@@ -63,7 +63,7 @@ class LineChartViewController: UIViewController {
         LineChart.data = lineChartData
         LineChart.animate(yAxisDuration: 1)
         
-        let ll = ChartLimitLine(limit: 10.0, label: "Target")
+        let ll = ChartLimitLine(limit: 2000.0, label: "Target")
         LineChart.rightAxis.addLimitLine(ll)
         
     }
