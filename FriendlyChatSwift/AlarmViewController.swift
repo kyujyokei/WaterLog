@@ -126,6 +126,9 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         PopUpView.layer.cornerRadius = 5
         
         alarmSwitch.on = false
+        alarmSwitch.onTintColor = waterColor
+        //alarmSwitch.backgroundColor = waterColor
+        //alarmSwitch.tintColor = waterColor
 
         startLabel.textColor = UIColor.grayColor()
         endLabel.textColor = UIColor.grayColor()
@@ -136,8 +139,6 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         endButton.enabled = false
         intervalButton.enabled = false
         customButton.enabled = false
-        
-        alarmSwitch.onTintColor = UIColor.blueColor()
         
         alarmTableView.tableFooterView = UIView()
         
@@ -245,6 +246,7 @@ class AlarmViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         dateFormatter.dateFormat = "h:mm a"
         let strDate = dateFormatter.stringFromDate(customDateArray[indexPath.row])
         cell.textLabel?.text = "\(strDate)"
+        cell.textLabel?.font = UIFont (name: "Roboto-Light", size: 16)
         return cell
     }
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

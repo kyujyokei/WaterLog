@@ -131,7 +131,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             dailyGoal = dailyGoal + 500
         }
         silder.value = Float(dailyGoal)
-        goalLabel.text = String(dailyGoal)
+        goalLabel.text = String(dailyGoal) + "ml"
     }
     
     

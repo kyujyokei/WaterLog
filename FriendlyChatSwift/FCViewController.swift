@@ -57,6 +57,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     var weightRecord = [Double]() // records weight
     var waterConsumed:Double = 0
 
+    @IBOutlet weak var mlLabel: UILabel!
   // Instance variables
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var sendButton: UIButton!
@@ -104,6 +105,7 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
     recordsButton.titleLabel!.font = UIFont (name: "Roboto-Light", size: 17)
     
     pieChartView.noDataText = "Loading..."
+    pieChartView.usePercentValuesEnabled = false
     pieChartView.backgroundColor = UIColor.clearColor()
     
     dailyGoalLabel.font = UIFont (name: "Roboto-Light", size: 25)
@@ -185,6 +187,8 @@ class FCViewController: UIViewController, UITableViewDataSource, UITableViewDele
         pieChartView.centerAttributedText = myAttrString
         pieChartView.descriptionTextColor = UIColor.clearColor()
         pieChartView.drawSliceTextEnabled = false
+        
+        mlLabel.hidden = false
 
         //pieChartView.hidden = false
         //pieChartDataSet.colors = ChartColorTemplates.liberty()

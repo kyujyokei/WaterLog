@@ -48,14 +48,14 @@ class LineChartViewController: UIViewController {
         
         var colors: [UIColor] = []
         
-        for i in 0..<dataPoints.count {
-            let red = Double(arc4random_uniform(256))
-            let green = Double(arc4random_uniform(256))
-            let blue = Double(arc4random_uniform(256))
-            
-            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-            colors.append(color)
-        }
+//        for i in 0..<dataPoints.count {
+//            let red = Double(arc4random_uniform(256))
+//            let green = Double(arc4random_uniform(256))
+//            let blue = Double(arc4random_uniform(256))
+//            
+//            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+//            colors.append(color)
+//        }
         
 
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Water Consumed")
@@ -63,7 +63,9 @@ class LineChartViewController: UIViewController {
         LineChart.data = lineChartData
         LineChart.animate(yAxisDuration: 1)
         
+        
         let ll = ChartLimitLine(limit: 2000.0, label: "Target")
+        ll.lineColor = waterColor
         LineChart.rightAxis.addLimitLine(ll)
         
     }

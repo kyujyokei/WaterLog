@@ -18,6 +18,8 @@ import UIKit
 
 import Firebase
 
+let waterColor = UIColor(red: 0/255, green: 117/255, blue: 255/255, alpha: 1)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
