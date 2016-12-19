@@ -6,6 +6,13 @@
 //  Copyright © 2016年 Google Inc. All rights reserved.
 //
 
+/**********
+ TODO:
+ 
+ Create NSUserData for storing settings
+ 
+ *********/
+
 import UIKit
 
 class settingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {

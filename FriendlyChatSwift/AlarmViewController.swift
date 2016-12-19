@@ -6,6 +6,14 @@
 //  Copyright © 2016年 Google Inc. All rights reserved.
 //
 
+/**********
+ TODO:
+ 
+ 1.Create NSUserData for storing alarms
+ 2.Set local notifications
+ 
+ *********/
+
 import UIKit
 
 class AlarmViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate {

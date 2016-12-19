@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5F5A53781ADE67D500F81DF0"
                BuildableName = "FriendlyChatSwift.app"
-               BlueprintName = "FriendlyChatSwift"
-               ReferencedContainer = "container:FriendlyChatSwift.xcodeproj">
+               BlueprintName = "WaterLog"
+               ReferencedContainer = "container:WaterLog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F5A53781ADE67D500F81DF0"
             BuildableName = "FriendlyChatSwift.app"
-            BlueprintName = "FriendlyChatSwift"
-            ReferencedContainer = "container:FriendlyChatSwift.xcodeproj">
+            BlueprintName = "WaterLog"
+            ReferencedContainer = "container:WaterLog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -57,8 +57,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F5A53781ADE67D500F81DF0"
             BuildableName = "FriendlyChatSwift.app"
-            BlueprintName = "FriendlyChatSwift"
-            ReferencedContainer = "container:FriendlyChatSwift.xcodeproj">
+            BlueprintName = "WaterLog"
+            ReferencedContainer = "container:WaterLog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -97,8 +97,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5F5A53781ADE67D500F81DF0"
             BuildableName = "FriendlyChatSwift.app"
-            BlueprintName = "FriendlyChatSwift"
-            ReferencedContainer = "container:FriendlyChatSwift.xcodeproj">
+            BlueprintName = "WaterLog"
+            ReferencedContainer = "container:WaterLog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

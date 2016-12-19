@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:FriendlyChatSwift.xcodeproj">
+      location = "group:/Users/kero/Desktop/WaterLog/WaterLog.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

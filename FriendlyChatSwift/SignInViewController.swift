@@ -14,6 +14,13 @@
 //  limitations under the License.
 //
 
+/**********
+ TODO:
+ 
+ 1. Set authentication methods for users to sign in 
+ 
+ *********/
+
 import UIKit
 
 import Firebase

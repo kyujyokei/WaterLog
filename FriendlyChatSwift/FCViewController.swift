@@ -14,6 +14,13 @@
 //  limitations under the License.
 //
 
+/**********
+ TODO:
+ 
+ 1. Filter out only today's records
+ 
+ *********/
+
 import Photos
 import UIKit
 
